@@ -4,30 +4,11 @@ import HeaderGenerator from "../../Components/Generator/HeaderGenerator/HeaderGe
 // assets
 import "./Generator.css";
 
-const Generator = () => {
+const Generator = ({ paragraph, dispatch }) => {
   return (
     <div className="generator">
-      <HeaderGenerator />
-      <div className="generator__content">
-        djfhksdhf ksdjfh sdjkfh dskf hdfhsd fjhds sdkfhslfh dksjfh sdkjhf dskjhf
-        dfhdsfh sdkjfh dskfhsd hfds k dfkhdskf dsifhsd kjfhds kjfhds djfhksdhf
-        ksdjfh sdjkfh dskf hdfhsd fjhds sdkfhslfh dksjfh sdkjhf dskjhf dfhdsfh
-        sdkjfh dskfhsd hfds k dfkhdskf dsifhsd kjfhds kjfhds djfhksdhf ksdjfh
-        sdjkfh dskf hdfhsd fjhds sdkfhslfh dksjfh sdkjhf dskjhf dfhdsfh sdkjfh
-        dskfhsd hfds k dfkhdskf dsifhsd kjfhds kjfhds djfhksdhf ksdjfh sdjkfh
-        dskf hdfhsd fjhds sdkfhslfh dksjfh sdkjhf dskjhf dfhdsfh sdkjfh dskfhsd
-        hfds k dfkhdskf dsifhsd kjfhds kjfhds djfhksdhf ksdjfh sdjkfh dskf
-        hdfhsd fjhds sdkfhslfh dksjfh sdkjhf dskjhf dfhdsfh sdkjfh dskfhsd hfds
-        k dfkhdskf dsifhsd kjfhds kjfhds djfhksdhf ksdjfh sdjkfh dskf hdfhsd
-        fjhds sdkfhslfh dksjfh sdkjhf dskjhf dfhdsfh sdkjfh dskfhsd hfds k
-        dfkhdskf dsifhsd kjfhds kjfhds djfhksdhf ksdjfh sdjkfh dskf hdfhsd fjhds
-        sdkfhslfh dksjfh sdkjhf dskjhf dfhdsfh sdkjfh dskfhsd hfds k dfkhdskf
-        dsifhsd kjfhds kjfhds djfhksdhf ksdjfh sdjkfh dskf hdfhsd fjhds
-        sdkfhslfh dksjfh sdkjhf dskjhf dfhdsfh sdkjfh dskfhsd hfds k dfkhdskf
-        dsifhsd kjfhds kjfhds djfhksdhf ksdjfh sdjkfh dskf hdfhsd fjhds
-        sdkfhslfh dksjfh sdkjhf dskjhf dfhdsfh sdkjfh dskfhsd hfds k dfkhdskf
-        dsifhsd kjfhds kjfhds
-      </div>
+      <HeaderGenerator startWith={dispatch} />
+      <div className="generator__content">{paragraph}</div>
     </div>
   );
 };

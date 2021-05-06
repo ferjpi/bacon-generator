@@ -4,7 +4,7 @@
   border: 1px solid var(--border-color);
 
   inline-size: 100%;
-  block-size: 175px;
+  block-size: 20rem;
 
   padding: 1rem;
   color: var(--secondary-color);
@@ -36,4 +36,8 @@
 
 .box__title-chart {
   margin-top: 2rem;
+}
+
+.box__chart {
+  block-size: 14rem;
 }
