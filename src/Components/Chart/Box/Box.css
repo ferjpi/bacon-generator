@@ -1,0 +1,43 @@
+@import "../../../variables.css";
+
+.box {
+  border: 1px solid var(--border-color);
+
+  inline-size: 100%;
+  block-size: 20rem;
+
+  padding: 1rem;
+  color: var(--secondary-color);
+  background-color: #ffffff;
+
+  border-radius: 0 0 4px 4px;
+}
+
+.box__total {
+  display: flex;
+
+  /* color: var(--secondary-color); */
+}
+
+.box__total__words,
+.box__total__characters,
+.box__title-chart {
+  font-family: var(--secondary-font-family);
+  font-weight: bold;
+  font-size: var(--font-size);
+  line-height: 18px;
+
+  margin: 0;
+}
+
+.box__total__characters {
+  margin-left: 5rem;
+}
+
+.box__title-chart {
+  margin-top: 2rem;
+}
+
+.box__chart {
+  block-size: 14rem;
+}
