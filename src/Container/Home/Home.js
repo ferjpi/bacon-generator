@@ -1,8 +1,9 @@
 import React from "react";
-import Box from "../Components/Chart/Box/Box";
+import Box from "../../Components/Chart/Box/Box";
+import Generator from "../Generator/Generator";
 
 // assets
-import spicy from "../Assets/Images/spicy.png";
+import spicy from "../../Assets/Images/spicy.png";
 import "./Home.css";
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       </div>
       <p className="home__subtitle">Bacon Ipsum Generator</p>
       <Box>Hello</Box>
+      <Generator />
     </div>
   );
 };

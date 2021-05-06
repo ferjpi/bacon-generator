@@ -1,13 +1,14 @@
 @import "../../../variables.css";
 
 .box {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-color);
 
   inline-size: 100%;
   block-size: 175px;
 
   padding: 1rem;
   color: var(--secondary-color);
+  background-color: #ffffff;
 
   border-radius: 0 0 4px 4px;
 }

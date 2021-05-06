@@ -1,4 +1,4 @@
-import Home from "./Container/Home";
+import Home from "./Container/Home/Home";
 
 // assets
 import "./App.css";
