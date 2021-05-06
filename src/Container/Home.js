@@ -1,4 +1,5 @@
 import React from "react";
+import Box from "../Components/Chart/Box/Box";
 
 // assets
 import spicy from "../Assets/Images/spicy.png";
@@ -12,6 +13,7 @@ const Home = () => {
         <img src={spicy} alt="spicy" className="home__title-container__logo" />
       </div>
       <p className="home__subtitle">Bacon Ipsum Generator</p>
+      <Box>Hello</Box>
     </div>
   );
 };
