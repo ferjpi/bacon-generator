@@ -2,7 +2,8 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 
 const ChartComponent = ({ data }) => {
-  console.log("re: ", data);
+  if (!Object.keys(data).length) return null;
+
   const structureData = {
     labels: [data.words.word1, data.words.word2, data.words.word3],
     datasets: [

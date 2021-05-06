@@ -18,10 +18,12 @@ const homeReducer = (state, action) => {
         error: null,
       };
     case "start-with":
-      let defaultUrl = "all-meat";
-
-      if (action.payload) defaultUrl = "meat-and-filler";
-      return { ...state, startWith: defaultUrl };
+      return {
+        ...state,
+        startWith: action.payload ? "&start-with-lorem=1" : "",
+      };
+    case "paragraph":
+      return { ...state, paras: action.payload };
     default:
       break;
   }
@@ -29,11 +31,13 @@ const homeReducer = (state, action) => {
 
 const initialState = {
   status: "idle",
-  data: null,
+  data:
+    "Spicy jalapeno bacon ipsum dolor amet tenderloin cow spare ribs cupim, ham short ribs ribeye alcatra biltong ham hock. Pig ribeye kielbasa tri-tip, kevin biltong swine drumstick chicken t-bone. Meatloaf kielbasa frankfurter t-bone, pork chop leberkas buffalo pork belly swine. Rump meatball t-bone salami kevin brisket cupim landjaeger. Beef ribs spare ribs jerky bacon rump. Corned beef flank tail, tongue beef ribs ball tip t-bone meatloaf.",
   words: [],
   error: null,
+  paras: 1,
+  startWith: "",
   isLoading: false,
-  startWith: "all-meat",
 };
 
 const Home = () => {
@@ -51,7 +55,13 @@ const Home = () => {
     return text;
   };
 
+  /**
+   * Function that get the top 3 words more used.
+   *
+   * The computational complexity is O(n)
+   */
   const getWords = (text) => {
+    // initialize the variables
     let max1 = 0;
     let max2 = 0;
     let max3 = 0;
@@ -59,15 +69,23 @@ const Home = () => {
     let word2 = "";
     let word3 = "";
 
+    // map the words
     let mapWords = {};
 
+    // split text and return an array
     let arr = text.split(" ");
 
+    // iterate over the elements of the array (word)
     for (let x of arr) {
-      if (!x.length) continue;
+      if (!x.length) continue; // if text is empty
+
       if (mapWords[x] === undefined) mapWords[x] = 1;
+      // initialize map
       else {
+        // increment the value of the word
         mapWords[x] += 1;
+
+        // if word if grader than the variable
         if (mapWords[x] > max1) {
           max1 = mapWords[x];
           word1 = x;
@@ -81,23 +99,43 @@ const Home = () => {
       }
     }
 
+    // return the result
     return { max1, word1, max2, word2, max3, word3 };
   };
 
+  /**
+   * Get the text and return an object
+   * with the total words in the text and
+   * the number of characters
+   *
+   *
+   */
   const manipulateData = useCallback((text) => {
+    // initialize the variables
     let totalWords = 0;
     let totalCharacters = 0;
 
+    // split the text and return an array of words
     let arrOfWords = text.split(" ");
 
+    // Number of words
     totalWords = arrOfWords.length;
 
+    // join the words without space
     let longString = arrOfWords.join("");
 
+    // count the number of characters
     totalCharacters = longString.length;
 
+    /**
+     * call the function that is going to
+     * find the top 3 words.
+     *
+     * Return an object
+     */
     const words = getWords(text);
 
+    // return the result
     return {
       totalWords,
       totalCharacters,
@@ -105,24 +143,17 @@ const Home = () => {
     };
   }, []);
 
-  const fetchData = useCallback(async () => {
-    let res = await await (
-      await fetch(`https://baconipsum.com/api/?type=${state.startWith}`)
-    ).json();
+  const handleSubmit = async () => {
+    let reJson = await fetch(
+      `https://baconipsum.com/api/?type=all-meat&paras=${state.paras}${state.startWith}`
+    );
+    let res = await reJson.json();
 
     const result = extractText(res);
     const words = manipulateData(result);
 
     dispatchState({ type: "load-data", payload: { data: result, words } });
-  }, [state.startWith, manipulateData]);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData, state.startWith]);
-
-  useEffect(() => {
-    console.log("state.words: ", state.words);
-  }, [state.words]);
+  };
 
   return (
     <div className="home">
@@ -136,10 +167,8 @@ const Home = () => {
       </Box>
       <Generator
         paragraph={state.data}
-        // data={state.words}
-        dispatch={(e) =>
-          dispatchState({ type: "start-with", payload: e.target.checked })
-        }
+        onClick={() => handleSubmit()}
+        dispatch={(e) => dispatchState(e)}
       />
     </div>
   );

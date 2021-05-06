@@ -4,10 +4,10 @@ import HeaderGenerator from "../../Components/Generator/HeaderGenerator/HeaderGe
 // assets
 import "./Generator.css";
 
-const Generator = ({ paragraph, dispatch }) => {
+const Generator = ({ paragraph, dispatch, onClick }) => {
   return (
     <div className="generator">
-      <HeaderGenerator startWith={dispatch} />
+      <HeaderGenerator dispatch={dispatch} onClick={onClick} />
       <div className="generator__content">{paragraph}</div>
     </div>
   );
