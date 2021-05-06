@@ -1,0 +1,22 @@
+@import "../../../variables.css";
+
+.box {
+  border: 1px solid #e0e0e0;
+
+  inline-size: 100%;
+  block-size: 175px;
+}
+
+.box__total {
+  display: flex;
+
+  color: var(--secondary-color);
+}
+
+.box__total__words,
+.box__total__characters {
+  font-family: var(--secondary-font-family);
+  font-weight: bold;
+  font-size: var(--font-size);
+  line-height: 18px;
+}
